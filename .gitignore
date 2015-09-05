@@ -1,0 +1,5 @@
+bin
+obj
+/eCommerce/packages
+*.suo
+*.user
