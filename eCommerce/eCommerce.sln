@@ -9,6 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCommerce.iOS", "eCommerce\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCommerce.Droid", "eCommerce\eCommerce.Droid\eCommerce.Droid.csproj", "{1410777A-D9DD-427B-80F2-FCD2C439B36F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{321C59E8-B2D2-4EAB-9EC6-54F6ED9D3F2E}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
