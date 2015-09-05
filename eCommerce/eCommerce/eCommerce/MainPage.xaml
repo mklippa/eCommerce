@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:eCommerce;assembly=eCommerce"
+            x:Class="eCommerce.MainPage">
+  <TabbedPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness" 
+                iOS="0, 20, 0, 0" />
+ </TabbedPage.Padding>
+  <TabbedPage.Children>
+    <local:SearchPage />
+    <local:CatalogPage />
+    <local:CartPage />
+    <local:InfoPage />
+  </TabbedPage.Children>
+</TabbedPage>
