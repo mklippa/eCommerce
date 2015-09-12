@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
+﻿using Xamarin.Forms;
 
-using Xamarin.Forms;
-
-namespace eCommerce
+namespace eCommerce.Pages
 {
     public class InfoPage : ContentPage
     {
         public InfoPage()
         {
+            Padding = Device.OnPlatform(new Thickness(0, 20, 0, 0), new Thickness(0), new Thickness(0));
             Title = "Info";
+            Icon = "info.png";
             Content = new StackLayout
             {
                 Children = {
