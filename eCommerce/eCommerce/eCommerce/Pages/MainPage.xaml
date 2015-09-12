@@ -4,7 +4,7 @@
             xmlns:local="clr-namespace:eCommerce.Pages;assembly=eCommerce"
             x:Class="eCommerce.MainPage">
   <TabbedPage.Children>
-    <local:SearchPage />
+    <local:SearchNavigationPage />
     <local:CatalogPage />
     <local:CartPage />
     <local:InfoPage />
