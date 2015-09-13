@@ -37,6 +37,7 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Objects\BaseObject.cs" />
     <Compile Include="Objects\Category.cs" />
     <Compile Include="Objects\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

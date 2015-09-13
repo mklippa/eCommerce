@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using eCommerce.Enums;
+﻿using eCommerce.Client.Managers;
 using Xamarin.Forms;
 
 namespace eCommerce.Pages
@@ -14,7 +9,11 @@ namespace eCommerce.Pages
         {
             Title = "Search";
             Icon = "search.png";
-            PushAsync(new SearchPage(CatalogPageType.Category));
+
+            var productManager = new ProductManager();
+            var products = productManager.GetAll();
+
+            PushAsync(new SearchPage(products));
         }
     }
 }

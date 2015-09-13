@@ -35,9 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="Enums\SearchPageType.cs" />
+    <Compile Include="Enums\CatalogPageType.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Pages\CartPage.cs" />
+    <Compile Include="Pages\CatalogNavigationPage.cs" />
     <Compile Include="Pages\CatalogPage.cs" />
     <Compile Include="Pages\InfoPage.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">
