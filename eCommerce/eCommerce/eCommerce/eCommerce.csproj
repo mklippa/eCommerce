@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Converters\PathToImageSourceConverter.cs" />
     <Compile Include="Enums\CatalogPageType.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Pages\CartPage.cs" />
@@ -48,6 +49,7 @@
     <Compile Include="Pages\SearchNavigationPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Pages\SearchPage.cs" />
+    <Compile Include="Viewes\ProductCell.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core, Version=1.3.3.0, Culture=neutral, processorArchitecture=MSIL">
@@ -76,6 +78,29 @@
       <Project>{11B07D74-7973-4713-9614-87D31A5EC6EB}</Project>
       <Name>eCommerce.Client</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Products\apple.jpg" />
+    <EmbeddedResource Include="Images\Products\banana.jpg" />
+    <EmbeddedResource Include="Images\Products\basketball-ball.jpg" />
+    <EmbeddedResource Include="Images\Products\basketball-shoes.jpg" />
+    <EmbeddedResource Include="Images\Products\battlefield.jpg" />
+    <EmbeddedResource Include="Images\Products\beef.jpg" />
+    <EmbeddedResource Include="Images\Products\call-of-duty.jpg" />
+    <EmbeddedResource Include="Images\Products\candies.jpg" />
+    <EmbeddedResource Include="Images\Products\dragon-age.jpg" />
+    <EmbeddedResource Include="Images\Products\football-ball.jpg" />
+    <EmbeddedResource Include="Images\Products\football-boots.jpg" />
+    <EmbeddedResource Include="Images\Products\hockey-stick.jpg" />
+    <EmbeddedResource Include="Images\Products\ice-cream.jpg" />
+    <EmbeddedResource Include="Images\Products\pac-man.jpg" />
+    <EmbeddedResource Include="Images\Products\pork.jpg" />
+    <EmbeddedResource Include="Images\Products\skates.jpg" />
+    <EmbeddedResource Include="Images\Products\super-mario.jpg" />
+    <EmbeddedResource Include="Images\Products\the-elder-scrolls.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Products\temp.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.1.3.3.6323\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.1.3.3.6323\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using eCommerce.Client.Managers;
 using eCommerce.Client.Objects;
 using eCommerce.Enums;
 using eCommerce.Extensions;
+using eCommerce.Viewes;
 using Xamarin.Forms;
 
 namespace eCommerce.Pages
@@ -25,6 +27,9 @@ namespace eCommerce.Pages
             var listView = new ListView();
             listView.ItemTapped += OnListViewItemTapped;
             listView.ItemsSource = _productsList;
+            listView.HasUnevenRows = true;
+            listView.RowHeight = 80;
+            listView.ItemTemplate = new DataTemplate(typeof(ProductCell));
 
             Title = "Product";
 

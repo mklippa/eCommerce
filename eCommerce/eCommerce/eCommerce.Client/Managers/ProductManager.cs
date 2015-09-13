@@ -196,7 +196,7 @@ namespace eCommerce.Client.Managers
                     Id = Guid.Parse("8ac1d793-2a58-44fd-a2ef-7fa2a76c8f32"),
                     Name = "Mario",
                     Description = "Mario description here...",
-                    ImageSource = "eCommerce.Images.Products.mario.jpg",
+                    ImageSource = "eCommerce.Images.Products.super-mario.jpg",
                     Price = 3.99f,
                     CategoryId = Guid.Parse("561aafdf-50fb-406b-9f95-2a2e155e9455")
                 }

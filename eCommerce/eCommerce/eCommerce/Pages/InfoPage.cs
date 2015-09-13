@@ -12,7 +12,13 @@ namespace eCommerce.Pages
             Content = new StackLayout
             {
                 Children = {
-					new Label { Text = "Info Page" }
+					new Label { Text = "Info Page" },
+                    new Image
+                    {
+                        Source = ImageSource.FromResource("eCommerce.Images.Products.skates.jpg"),
+                        WidthRequest = 70,
+                        HeightRequest = 70
+                    }
 				}
             };
         }
