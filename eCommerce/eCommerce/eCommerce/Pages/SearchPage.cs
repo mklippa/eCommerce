@@ -11,27 +11,22 @@ namespace eCommerce.Pages
 {
     public class SearchPage : ContentPage
     {
-        private readonly CategoryManager _categoryManager;
-        private readonly ObservableCollection<Category> _categoriesList;
-        private readonly CatalogPageType _pageType;
-        private readonly Category _parentCategory;
-        private IEnumerable<Category> _categories;
+        private readonly ObservableCollection<Product> _productsList;
+        private readonly IEnumerable<Product> _products;
 
-        public SearchPage(CatalogPageType pageType, Category parentCategory = null)
+        public SearchPage(IEnumerable<Product> products)
         {
-            _parentCategory = parentCategory;
-            _pageType = pageType;
-            _categoryManager = new CategoryManager();
-            _categoriesList = new ObservableCollection<Category>();
+            _products = products;
+            _productsList = new ObservableCollection<Product>(_products);
 
             var searchBar = new SearchBar();
             searchBar.TextChanged += OnSearchBarTextChanged;
 
             var listView = new ListView();
             listView.ItemTapped += OnListViewItemTapped;
-            listView.ItemsSource = _categoriesList;
+            listView.ItemsSource = _productsList;
 
-            Title = _pageType.ToString();
+            Title = "Product";
 
             Content = new StackLayout
             {
@@ -49,32 +44,21 @@ namespace eCommerce.Pages
             if (listView.SelectedItem == null)
                 return;
 
-            var parentCategory = (Category) listView.SelectedItem;
+            var selectedProduct = (Product) listView.SelectedItem;
 
-            await Navigation.PushAsync(new SearchPage(_pageType, parentCategory));
+//            await Navigation.PushAsync(new SearchPage(_pageType, parentCategory));
             listView.SelectedItem = null;
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            _categories = _parentCategory == null
-                ? _categoryManager.GetAll()
-                : _parentCategory.SubCategories;
-
-            _categoriesList.FillWith(_categories);
         }
 
         private void OnSearchBarTextChanged(object sender, TextChangedEventArgs e)
         {
             var text = ((SearchBar) sender).Text;
 
-            var categories = string.IsNullOrEmpty(text)
-                ? _categories 
-                : _categories.Where(c => c.Name.ToLower().Contains(text.ToLower()));
+            var filteredProducts = string.IsNullOrEmpty(text)
+                ? _products 
+                : _products.Where(c => c.Name.ToLower().Contains(text.ToLower()));
 
-            _categoriesList.FillWith(categories);
+            _productsList.FillWith(filteredProducts);
         }
     }
 }
