@@ -174,7 +174,7 @@ namespace eCommerce.Client.Managers
                 {
                     Id = Guid.Parse("33f5efe8-2626-48d0-b163-3bba552980b0"),
                     Name = "The Elder Scrolls",
-                    Description = "The Elder Scrolls description here...",
+                    Description = "The Elder Scrolls description...",
                     ImageSource = "eCommerce.Images.Products.the-elder-scrolls.jpg",
                     Price = 11.5f,
                     CategoryId = Guid.Parse("08086b04-8011-4197-87e6-3f848a0d96fa")

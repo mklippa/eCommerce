@@ -27,7 +27,6 @@ namespace eCommerce.Pages
             var listView = new ListView();
             listView.ItemTapped += OnListViewItemTapped;
             listView.ItemsSource = _productsList;
-            listView.HasUnevenRows = true;
             listView.RowHeight = 80;
             listView.ItemTemplate = new DataTemplate(typeof(ProductCell));
 
