@@ -45,8 +45,7 @@ namespace eCommerce.Pages
                 return;
 
             var selectedProduct = (Product) listView.SelectedItem;
-
-//            await Navigation.PushAsync(new SearchPage(_pageType, parentCategory));
+            await Navigation.PushAsync(new ProductPage(selectedProduct));
             listView.SelectedItem = null;
         }
 

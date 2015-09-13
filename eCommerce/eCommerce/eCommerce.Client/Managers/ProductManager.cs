@@ -158,6 +158,11 @@ namespace eCommerce.Client.Managers
         public List<Product> GetProductsByCategoryId(Guid categoryId)
         {
             return _products.Where(p => p.CategoryId == categoryId).ToList();
-        } 
+        }
+
+        public Product GetById(Guid id)
+        {
+            return _products.SingleOrDefault(p => p.Id == id);
+        }
     }
 }

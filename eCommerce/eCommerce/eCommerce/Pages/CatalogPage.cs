@@ -54,6 +54,9 @@ namespace eCommerce.Pages
                 }
                 case CatalogPageType.Product:
                 {
+                    var selectedProduct = (Product) listView.SelectedItem;
+                    await Navigation.PushAsync(new ProductPage(selectedProduct));
+                    listView.SelectedItem = null;
                     break;
                 }
             }
