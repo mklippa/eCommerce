@@ -6,5 +6,10 @@ namespace eCommerce.Client.Objects
     {
         public string Name { get; set; }
         public Guid CategoryId { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

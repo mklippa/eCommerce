@@ -10,7 +10,6 @@ namespace eCommerce.Pages
         public ProductPage(Product product)
         {
             _product = product;
-            Padding = Device.OnPlatform(new Thickness(0, 20, 0, 0), new Thickness(0), new Thickness(0));
             Title = "Product";
             Content = new StackLayout
             {
