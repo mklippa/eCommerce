@@ -5,7 +5,7 @@
             x:Class="eCommerce.MainPage">
   <TabbedPage.Children>
     <local:SearchNavigationPage />
-    <local:CatalogPage />
+    <local:CatalogNavigationPage />
     <local:CartPage />
     <local:InfoPage />
   </TabbedPage.Children>

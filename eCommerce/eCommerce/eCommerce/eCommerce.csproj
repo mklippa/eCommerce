@@ -70,9 +70,9 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\eCommerce.Core\eCommerce.Core.csproj">
+    <ProjectReference Include="..\eCommerce.Client\eCommerce.Client.csproj">
       <Project>{11B07D74-7973-4713-9614-87D31A5EC6EB}</Project>
-      <Name>eCommerce.Core</Name>
+      <Name>eCommerce.Client</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

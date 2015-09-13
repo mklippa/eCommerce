@@ -1,6 +1,6 @@
 ﻿namespace eCommerce.Enums
 {
-    public enum SearchPageType
+    public enum CatalogPageType
     {
         Category,
         Subcategory,

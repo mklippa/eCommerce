@@ -1,10 +1,9 @@
 ﻿using System;
 
-namespace eCommerce.Core.Models
+namespace eCommerce.Client.Objects
 {
-    public class Product
+    public class Product : BaseObject
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public Guid CategoryId { get; set; }
     }

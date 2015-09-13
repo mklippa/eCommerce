@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCommerce.iOS", "eCommerce\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCommerce.Droid", "eCommerce\eCommerce.Droid\eCommerce.Droid.csproj", "{FA5FA866-8580-4B31-8D61-FC23ABFAF230}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCommerce.Core", "eCommerce.Core\eCommerce.Core.csproj", "{11B07D74-7973-4713-9614-87D31A5EC6EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCommerce.Client", "eCommerce\eCommerce.Client\eCommerce.Client.csproj", "{11B07D74-7973-4713-9614-87D31A5EC6EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

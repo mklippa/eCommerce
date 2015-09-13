@@ -14,7 +14,7 @@ namespace eCommerce.Pages
         {
             Title = "Search";
             Icon = "search.png";
-            PushAsync(new SearchPage(SearchPageType.Category));
+            PushAsync(new SearchPage(CatalogPageType.Category));
         }
     }
 }

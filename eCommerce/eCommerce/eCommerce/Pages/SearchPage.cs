@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using eCommerce.Core.Models;
-using eCommerce.Core.Repositories;
+using eCommerce.Client.Managers;
+using eCommerce.Client.Objects;
 using eCommerce.Enums;
 using eCommerce.Extensions;
 using Xamarin.Forms;
@@ -11,17 +11,17 @@ namespace eCommerce.Pages
 {
     public class SearchPage : ContentPage
     {
-        private readonly CategoryRepository _categoryRepository;
+        private readonly CategoryManager _categoryManager;
         private readonly ObservableCollection<Category> _categoriesList;
-        private readonly SearchPageType _pageType;
+        private readonly CatalogPageType _pageType;
         private readonly Category _parentCategory;
         private IEnumerable<Category> _categories;
 
-        public SearchPage(SearchPageType pageType, Category parentCategory = null)
+        public SearchPage(CatalogPageType pageType, Category parentCategory = null)
         {
             _parentCategory = parentCategory;
             _pageType = pageType;
-            _categoryRepository = new CategoryRepository();
+            _categoryManager = new CategoryManager();
             _categoriesList = new ObservableCollection<Category>();
 
             var searchBar = new SearchBar();
@@ -60,7 +60,7 @@ namespace eCommerce.Pages
             base.OnAppearing();
 
             _categories = _parentCategory == null
-                ? _categoryRepository.GetAll()
+                ? _categoryManager.GetAll()
                 : _parentCategory.SubCategories;
 
             _categoriesList.FillWith(_categories);

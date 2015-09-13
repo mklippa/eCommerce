@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using eCommerce.Core.Models;
+using eCommerce.Client.Objects;
 
-namespace eCommerce.Core.Repositories
+namespace eCommerce.Client.Managers
 {
-    public class CategoryRepository
+    public class CategoryManager
     {
         private readonly List<Category> _categories; 
 
-        public CategoryRepository()
+        public CategoryManager()
         {
             #region [SPORT CATEGORIES]
             var sportCategory = new Category

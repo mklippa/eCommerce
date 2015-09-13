@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace eCommerce.Core.Models
+namespace eCommerce.Client.Objects
 {
-    public class Category
+    public class Category : BaseObject
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public List<Category> SubCategories { get; set; }
 
