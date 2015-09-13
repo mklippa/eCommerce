@@ -2,6 +2,7 @@
 using eCommerce.Client.Objects;
 using System.Collections.Generic;
 using eCommerce.Enums;
+using eCommerce.Viewes;
 using Xamarin.Forms;
 
 namespace eCommerce.Pages
@@ -17,6 +18,12 @@ namespace eCommerce.Pages
             var listView = new ListView();
             listView.ItemTapped += OnListViewItemTapped;
             listView.ItemsSource = items;
+
+            if (_pageType == CatalogPageType.Product)
+            {
+                listView.RowHeight = 80;
+                listView.ItemTemplate = new DataTemplate(typeof(ProductCell));
+            }
 
             Title = pageType.ToString();
             Content = new StackLayout
