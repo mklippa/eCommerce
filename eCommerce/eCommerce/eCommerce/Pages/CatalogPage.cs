@@ -1,4 +1,5 @@
-﻿using eCommerce.Client.Objects;
+﻿using eCommerce.Client.Managers;
+using eCommerce.Client.Objects;
 using System.Collections.Generic;
 using eCommerce.Enums;
 using Xamarin.Forms;
@@ -36,14 +37,25 @@ namespace eCommerce.Pages
             switch (_pageType)
             {
                 case CatalogPageType.Category:
-                    var selectedCategory = (Category)listView.SelectedItem;
+                {
+                    var selectedCategory = (Category) listView.SelectedItem;
                     await Navigation.PushAsync(new CatalogPage<Category>(CatalogPageType.Subcategory, selectedCategory.SubCategories));
                     listView.SelectedItem = null;
                     break;
+                }
                 case CatalogPageType.Subcategory:
+                {
+                    var selectedCategory = (Category) listView.SelectedItem;
+                    var productManager = new ProductManager();
+                    var products = productManager.GetProductsByCategoryId(selectedCategory.Id);
+                    await Navigation.PushAsync(new CatalogPage<Product>(CatalogPageType.Product, products));
+                    listView.SelectedItem = null;
                     break;
+                }
                 case CatalogPageType.Product:
+                {
                     break;
+                }
             }
         }
     }

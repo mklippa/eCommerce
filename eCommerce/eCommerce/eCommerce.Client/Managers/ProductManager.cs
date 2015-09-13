@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using eCommerce.Client.Objects;
 
 namespace eCommerce.Client.Managers
@@ -152,6 +153,11 @@ namespace eCommerce.Client.Managers
         public List<Product> GetAll()
         {
             return _products;
+        }
+
+        public List<Product> GetProductsByCategoryId(Guid categoryId)
+        {
+            return _products.Where(p => p.CategoryId == categoryId).ToList();
         } 
     }
 }
