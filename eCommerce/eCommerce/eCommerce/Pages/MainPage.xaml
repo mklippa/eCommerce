@@ -6,7 +6,7 @@
   <TabbedPage.Children>
     <local:SearchNavigationPage />
     <local:CatalogNavigationPage />
-    <local:CartPage />
+    <local:CartNavigationPage />
     <local:InfoPage />
   </TabbedPage.Children>
 </TabbedPage>

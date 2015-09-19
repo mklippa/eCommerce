@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using eCommerce.Viewes;
+using Xamarin.Forms;
 
 namespace eCommerce.Pages
 {
@@ -6,15 +7,26 @@ namespace eCommerce.Pages
     {
         public CartPage()
         {
-            Padding = Device.OnPlatform(new Thickness(0, 20, 0, 0), new Thickness(0), new Thickness(0));
             Title = "Cart";
-            Icon = "cart.png";
+
+            var listView = new ListView();
+            listView.ItemTapped += OnListViewItemTapped;
+            listView.ItemsSource = new[] {"", "", ""};
+            listView.ItemTemplate = new DataTemplate(typeof(CartCell));
+            listView.RowHeight = 60;
+
             Content = new StackLayout
             {
-                Children = {
-					new Label { Text = "Cart Page" }
-				}
+                Children =
+                {
+                    listView
+                }
             };
+        }
+
+        private void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            
         }
     }
 }
