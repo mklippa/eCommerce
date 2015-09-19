@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using eCommerce.Client.Objects;
 using eCommerce.Viewes;
 using Xamarin.Forms;
@@ -13,6 +14,17 @@ namespace eCommerce.Pages
         {
             _product = product;
             Title = "Product";
+            var addToCartButton = new Button
+            {
+                VerticalOptions = LayoutOptions.Start,
+                BorderWidth = 1,
+                BorderColor = Color.Gray,
+                Text = "Add",
+                Image = "cart.png"
+            };
+            addToCartButton.Clicked += OnAddToCartButtonClicked;
+            var productImageTapGestureRecognizer = new TapGestureRecognizer();
+            productImageTapGestureRecognizer.Tapped += OnProductImageTap;
             var grid = new Grid
             {
                 Padding = new Thickness(5, 0),
@@ -31,7 +43,8 @@ namespace eCommerce.Pages
                 {
                     HeightRequest = 100,
                     WidthRequest = 100,
-                    Source = ImageSource.FromResource((_product.ImageSource))
+                    Source = ImageSource.FromResource((_product.ImageSource)),
+                    GestureRecognizers = { productImageTapGestureRecognizer }
                 }
             }, 0, 0);
             grid.Children.Add(new ContentView
@@ -46,14 +59,7 @@ namespace eCommerce.Pages
             }, 1, 0);
             grid.Children.Add(new ContentView
             {
-                Content = new Button
-                {
-                    VerticalOptions = LayoutOptions.Start,
-                    BorderWidth = 1,
-                    BorderColor = Color.Gray,
-                    Text = "Add",
-                    Image = "cart.png"
-                }
+                Content = addToCartButton
             }, 2, 0);
             Content = new StackLayout
             {
@@ -77,6 +83,16 @@ namespace eCommerce.Pages
                     }
                 }
             };
+        }
+
+        private async void OnProductImageTap(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new ProductImagePage(ImageSource.FromResource(_product.ImageSource)));
+        }
+
+        private void OnAddToCartButtonClicked(object sender, EventArgs e)
+        {
+            
         }
     }
 }
