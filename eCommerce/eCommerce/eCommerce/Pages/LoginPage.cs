@@ -17,6 +17,7 @@ namespace eCommerce.Pages
             };
             okButton.Clicked += OnOkButtonClicked;
 
+            Title = "Login";
             Content = new StackLayout
             {
                 Spacing = 0,
