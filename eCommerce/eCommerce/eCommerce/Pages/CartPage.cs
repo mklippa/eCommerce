@@ -14,6 +14,16 @@ namespace eCommerce.Pages
             listView.ItemsSource = new[] {"", "", ""};
             listView.ItemTemplate = new DataTemplate(typeof(CartCell));
             listView.RowHeight = 60;
+            listView.Footer = new ContentView
+            {
+                Padding = new Thickness(10),
+                Content = new Label
+                {
+                    BackgroundColor = Color.Green,
+                    HorizontalOptions = LayoutOptions.End,
+                    Text = "Total ammount: $10"
+                }
+            };
 
             Content = new StackLayout
             {
