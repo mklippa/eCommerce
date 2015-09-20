@@ -43,9 +43,11 @@
     <Compile Include="Pages\CatalogNavigationPage.cs" />
     <Compile Include="Pages\CatalogPage.cs" />
     <Compile Include="Pages\InfoPage.cs" />
+    <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PaymentPage.cs" />
     <Compile Include="Pages\ProductImagePage.cs" />
     <Compile Include="Pages\ProductPage.cs" />
     <Compile Include="Pages\SearchNavigationPage.cs" />

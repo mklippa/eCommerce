@@ -19,11 +19,15 @@ namespace eCommerce.Pages
                 Padding = new Thickness(10),
                 Content = new Label
                 {
-                    BackgroundColor = Color.Green,
                     HorizontalOptions = LayoutOptions.End,
                     Text = "Total ammount: $10"
                 }
             };
+
+            ToolbarItems.Add(new ToolbarItem("Done", null, async () =>
+            {
+                await Navigation.PushAsync(new LoginPage());
+            }));
 
             Content = new StackLayout
             {
