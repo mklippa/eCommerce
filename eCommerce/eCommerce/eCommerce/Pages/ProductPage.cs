@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using eCommerce.Client.Objects;
+using eCommerce.Models;
 using eCommerce.Viewes;
 using Xamarin.Forms;
 
@@ -92,7 +94,23 @@ namespace eCommerce.Pages
 
         private void OnAddToCartButtonClicked(object sender, EventArgs e)
         {
-            
+            var cartItems = App.Database.GetItems().ToList();
+
+            var cartItem = cartItems.FirstOrDefault(i => i.ProductId == _product.Id);
+
+            if (cartItem == null)
+            {
+                App.Database.SaveItem(new CartItem
+                {
+                    ProductId = _product.Id,
+                    Quantity = 1,
+                });
+            }
+            else
+            {
+                cartItem.Quantity += 1;
+                App.Database.SaveItem(cartItem);
+            }
         }
     }
 }

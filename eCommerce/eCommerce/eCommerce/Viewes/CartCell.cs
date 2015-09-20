@@ -23,10 +23,10 @@ namespace eCommerce.Viewes
             var costLabel = new Label();
             var costContentView = new ContentView();
 
-            nameLabel.Text = "Product Name";
-            qtyLabel.Text = "1";
-            priceLabel.Text = "Price: $22.50";
-            costLabel.Text = "Cost: $45";
+            nameLabel.SetBinding(Label.TextProperty, "Name");
+            qtyLabel.SetBinding(Label.TextProperty, new Binding("Quantity", BindingMode.TwoWay));
+            priceLabel.SetBinding(Label.TextProperty, new Binding("Price", stringFormat: "Price: ${0:0.00}"));
+            costLabel.SetBinding(Label.TextProperty, new Binding("Cost", stringFormat: "Cost: ${0:0.00}"));
 
             cellLayout.Orientation = StackOrientation.Horizontal;
             cellLayout.Spacing = 0;
@@ -72,6 +72,18 @@ namespace eCommerce.Viewes
         {
             base.OnTapped();
             _qtyPicker.Focus();
+        }
+    }
+
+    public class CartCellViewModel
+    {
+        public int CartItemId { get; set; }
+        public string Name { get; set; }
+        public int Quantity { get; set; }
+        public float Price { get; set; }
+        public float Cost
+        {
+            get { return Quantity * Price; }
         }
     }
 }

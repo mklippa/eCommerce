@@ -6,10 +6,10 @@ namespace eCommerce.Pages
     {
         public PaymentPage()
         {
-            ToolbarItems.Add(new ToolbarItem("Done", null, async () =>
-            {
-//                await Navigation.PushAsync(new LoginPage());
-            }));
+//            ToolbarItems.Add(new ToolbarItem("Done", null, async () =>
+//            {
+////                await Navigation.PushAsync(new LoginPage());
+//            }));
 
             Title = "Payment";
             Content = new StackLayout

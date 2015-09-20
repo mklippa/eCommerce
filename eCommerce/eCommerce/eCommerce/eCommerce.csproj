@@ -36,8 +36,11 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Converters\PathToImageSourceConverter.cs" />
+    <Compile Include="Data\CartItemDatabase.cs" />
     <Compile Include="Enums\CatalogPageType.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
+    <Compile Include="ISQLite.cs" />
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Pages\CartNavigationPage.cs" />
     <Compile Include="Pages\CartPage.cs" />
     <Compile Include="Pages\CatalogNavigationPage.cs" />
@@ -63,9 +66,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\eCommerce.Client\eCommerce.Client.csproj">
       <Project>{11B07D74-7973-4713-9614-87D31A5EC6EB}</Project>
