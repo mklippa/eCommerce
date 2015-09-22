@@ -44,6 +44,7 @@
     <Compile Include="Models\BaseViewModel.cs" />
     <Compile Include="Data\Models\CartItem.cs" />
     <Compile Include="Models\CartCellViewModel.cs" />
+    <Compile Include="Models\CartViewModel.cs" />
     <Compile Include="Pages\CartNavigationPage.cs" />
     <Compile Include="Pages\CartPage.cs" />
     <Compile Include="Pages\CatalogNavigationPage.cs" />

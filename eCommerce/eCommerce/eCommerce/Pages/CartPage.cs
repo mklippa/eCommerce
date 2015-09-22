@@ -1,4 +1,7 @@
-﻿using eCommerce.Client.Managers;
+﻿using System.Collections;
+using System.Collections.Specialized;
+using eCommerce.Client.Managers;
+using eCommerce.Converters;
 using eCommerce.Extensions;
 using eCommerce.Models;
 using eCommerce.Viewes;
@@ -11,7 +14,7 @@ namespace eCommerce.Pages
 {
     public class CartPage : ContentPage
     {
-        private readonly ObservableCollection<CartCellViewModel> _cartList;
+        private readonly CartViewModel _cartViewModel;
         private readonly ProductManager _productManager;
         private readonly Picker _qtyPicker;
         private int _selectedCartItemId;
@@ -19,7 +22,13 @@ namespace eCommerce.Pages
         public CartPage()
         {
             _productManager = new ProductManager();
-            _cartList = new ObservableCollection<CartCellViewModel>();
+
+            _cartViewModel = new CartViewModel
+            {
+                CartList = new ObservableCollection<CartCellViewModel>(),
+            };
+            this.BindingContext = _cartViewModel;
+            
             _qtyPicker = new Picker {IsVisible = false};
             _qtyPicker.Items.Add("1");
             _qtyPicker.Items.Add("2");
@@ -30,18 +39,15 @@ namespace eCommerce.Pages
 
             var listView = new ListView();
             listView.ItemTapped += OnListViewItemTapped;
-            listView.ItemsSource = _cartList;
             listView.ItemTemplate = new DataTemplate(typeof(CartCell));
             listView.RowHeight = 60;
-            listView.Footer = new ContentView
-            {
-                Padding = new Thickness(10),
-                Content = new Label
-                {
-                    HorizontalOptions = LayoutOptions.End,
-                    Text = "Total ammount: $10"
-                }
-            };
+            listView.SetBinding(ListView.ItemsSourceProperty, "CartList");
+            
+            var footer = new Label();
+            footer.SetBinding(Label.TextProperty, new Binding("TotalAmount", 
+                stringFormat: "Total Amount: ${0:0.00}",
+                source: _cartViewModel));
+            listView.Footer = footer;
 
             ToolbarItems.Add(new ToolbarItem("Done", null, async () =>
             {
@@ -64,8 +70,8 @@ namespace eCommerce.Pages
             var item = App.Database.GetItem(_selectedCartItemId);
             item.Quantity = qty;
             App.Database.SaveItem(item);
-            var index = _cartList.ToList().FindIndex(i => i.CartItemId == _selectedCartItemId);
-            _cartList[index].Quantity = qty;
+            var index = _cartViewModel.CartList.ToList().FindIndex(i => i.CartItemId == _selectedCartItemId);
+            _cartViewModel.SetCartItemQty(index, qty);
         }
 
         protected override void OnAppearing()
@@ -84,7 +90,7 @@ namespace eCommerce.Pages
                 };
             }).ToList();
 
-            _cartList.FillWith(items);
+            _cartViewModel.CartList.FillWith(items);
         }
 
         private void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
