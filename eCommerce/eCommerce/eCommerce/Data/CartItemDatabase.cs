@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using eCommerce.Data.Models;
 using eCommerce.Models;
 using SQLite;
 using Xamarin.Forms;

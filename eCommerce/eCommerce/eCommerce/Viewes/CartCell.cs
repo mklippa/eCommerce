@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using eCommerce.Converters;
 using Xamarin.Forms;
 
 namespace eCommerce.Viewes
 {
     public class CartCell : ViewCell
     {
-        private readonly Picker _qtyPicker = new Picker();
-
         public CartCell()
         {
             var cellLayout = new StackLayout();
@@ -24,7 +23,7 @@ namespace eCommerce.Viewes
             var costContentView = new ContentView();
 
             nameLabel.SetBinding(Label.TextProperty, "Name");
-            qtyLabel.SetBinding(Label.TextProperty, new Binding("Quantity", BindingMode.TwoWay));
+            qtyLabel.SetBinding(Label.TextProperty, new Binding("Quantity", BindingMode.TwoWay, new IntToStringConverter()));
             priceLabel.SetBinding(Label.TextProperty, new Binding("Price", stringFormat: "Price: ${0:0.00}"));
             costLabel.SetBinding(Label.TextProperty, new Binding("Cost", stringFormat: "Cost: ${0:0.00}"));
 
@@ -45,20 +44,11 @@ namespace eCommerce.Viewes
             qtyContentView.Padding = new Thickness(10);
             priceContentView.Padding = new Thickness(5);
             costContentView.Padding = new Thickness(5);
-            _qtyPicker.IsVisible = false;
-            _qtyPicker.Items.Add("1");
-            _qtyPicker.Items.Add("2");
-            _qtyPicker.Items.Add("3");
-            _qtyPicker.SelectedIndexChanged += (sender, args) =>
-            {
-                qtyLabel.Text = _qtyPicker.Items[_qtyPicker.SelectedIndex];
-            };
 
             nameContentView.Content = nameLabel;
             qtyContentView.Content = qtyLabel;
             priceContentView.Content = priceLabel;
             costContentView.Content = costLabel;
-            cellLayout.Children.Add(_qtyPicker);
             cellLayout.Children.Add(qtyContentView);
             cellLayout.Children.Add(detailsLayout);
             detailsLayout.Children.Add(nameContentView);
@@ -67,23 +57,7 @@ namespace eCommerce.Viewes
             priceLayout.Children.Add(costContentView);
             View = cellLayout;
         }
-
-        protected override void OnTapped()
-        {
-            base.OnTapped();
-            _qtyPicker.Focus();
-        }
     }
 
-    public class CartCellViewModel
-    {
-        public int CartItemId { get; set; }
-        public string Name { get; set; }
-        public int Quantity { get; set; }
-        public float Price { get; set; }
-        public float Cost
-        {
-            get { return Quantity * Price; }
-        }
-    }
+    
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using SQLite;
 
-namespace eCommerce.Models
+namespace eCommerce.Data.Models
 {
     public class CartItem
     {

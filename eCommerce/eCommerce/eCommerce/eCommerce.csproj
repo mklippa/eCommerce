@@ -35,12 +35,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Converters\IntToStringConverter.cs" />
     <Compile Include="Converters\PathToImageSourceConverter.cs" />
     <Compile Include="Data\CartItemDatabase.cs" />
     <Compile Include="Enums\CatalogPageType.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="ISQLite.cs" />
-    <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\BaseViewModel.cs" />
+    <Compile Include="Data\Models\CartItem.cs" />
+    <Compile Include="Models\CartCellViewModel.cs" />
     <Compile Include="Pages\CartNavigationPage.cs" />
     <Compile Include="Pages\CartPage.cs" />
     <Compile Include="Pages\CatalogNavigationPage.cs" />

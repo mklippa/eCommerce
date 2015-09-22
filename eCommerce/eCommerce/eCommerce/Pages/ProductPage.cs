@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using eCommerce.Client.Objects;
+using eCommerce.Data.Models;
 using eCommerce.Models;
 using eCommerce.Viewes;
 using Xamarin.Forms;
