@@ -1,12 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Specialized;
-using eCommerce.Client.Managers;
-using eCommerce.Converters;
-using eCommerce.Extensions;
+﻿using eCommerce.Client.Managers;
 using eCommerce.Models;
 using eCommerce.Viewes;
 using System;
-using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Forms;
 
@@ -23,16 +18,11 @@ namespace eCommerce.Pages
         {
             _productManager = new ProductManager();
 
-            _cartViewModel = new CartViewModel
-            {
-                CartList = new ObservableCollection<CartCellViewModel>(),
-            };
+            _cartViewModel = new CartViewModel();
             this.BindingContext = _cartViewModel;
             
             _qtyPicker = new Picker {IsVisible = false};
-            _qtyPicker.Items.Add("1");
-            _qtyPicker.Items.Add("2");
-            _qtyPicker.Items.Add("3");
+            for (var i = 1; i < 100; _qtyPicker.Items.Add((i++).ToString()))
             _qtyPicker.SelectedIndexChanged += OnQtyPickerSelectedIndexChanged;
 
             Title = "Cart";
@@ -42,12 +32,17 @@ namespace eCommerce.Pages
             listView.ItemTemplate = new DataTemplate(typeof(CartCell));
             listView.RowHeight = 60;
             listView.SetBinding(ListView.ItemsSourceProperty, "CartList");
-            
-            var footer = new Label();
-            footer.SetBinding(Label.TextProperty, new Binding("TotalAmount", 
-                stringFormat: "Total Amount: ${0:0.00}",
-                source: _cartViewModel));
-            listView.Footer = footer;
+
+            var footer = new Label
+            {
+                HorizontalOptions = LayoutOptions.End
+            };
+            footer.SetBinding(Label.TextProperty, new Binding("TotalAmount", stringFormat: "Total Amount: ${0:0.00}", source: _cartViewModel));
+            listView.Footer = new ContentView
+            {
+                Padding = new Thickness(10),
+                Content = footer
+            };
 
             ToolbarItems.Add(new ToolbarItem("Done", null, async () =>
             {
@@ -70,8 +65,7 @@ namespace eCommerce.Pages
             var item = App.Database.GetItem(_selectedCartItemId);
             item.Quantity = qty;
             App.Database.SaveItem(item);
-            var index = _cartViewModel.CartList.ToList().FindIndex(i => i.CartItemId == _selectedCartItemId);
-            _cartViewModel.SetCartItemQty(index, qty);
+            _cartViewModel.SetCartItemQty(_selectedCartItemId, qty);
         }
 
         protected override void OnAppearing()
@@ -90,7 +84,7 @@ namespace eCommerce.Pages
                 };
             }).ToList();
 
-            _cartViewModel.CartList.FillWith(items);
+            _cartViewModel.FillWith(items);
         }
 
         private void OnListViewItemTapped(object sender, ItemTappedEventArgs e)

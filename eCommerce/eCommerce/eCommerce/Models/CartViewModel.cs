@@ -1,31 +1,25 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using eCommerce.Extensions;
 
 namespace eCommerce.Models
 {
     public class CartViewModel : BaseViewModel
     {
         private float _totalAmount;
-        private ObservableCollection<CartCellViewModel> _cartList;
+        private readonly ObservableCollection<CartCellViewModel> _cartList;
 
         public CartViewModel()
         {
             _cartList = new ObservableCollection<CartCellViewModel>();
-            _cartList.CollectionChanged += (sender, args) =>
-            {
-                TotalAmount = _cartList.Sum(i => i.Cost);
-            };
         }
 
-        public ObservableCollection<CartCellViewModel> CartList
+        public IEnumerable CartList
         {
             get { return _cartList; }
-            set
-            {
-                _cartList = value;
-                TotalAmount = _cartList.Sum(i => i.Cost);
-            }
         }
 
         public float TotalAmount
@@ -34,9 +28,16 @@ namespace eCommerce.Models
             private set { ChangeAndNotify(ref _totalAmount, value); }
         }
 
-        public void SetCartItemQty(int index, int qty)
+        public void SetCartItemQty(int cartItemId, int qty)
         {
+            var index = _cartList.ToList().FindIndex(i => i.CartItemId == cartItemId);
             _cartList[index].Quantity = qty;
+            TotalAmount = _cartList.Sum(i => i.Cost);
+        }
+
+        public void FillWith(IEnumerable<CartCellViewModel> items)
+        {
+            _cartList.FillWith(items);
             TotalAmount = _cartList.Sum(i => i.Cost);
         }
     }
