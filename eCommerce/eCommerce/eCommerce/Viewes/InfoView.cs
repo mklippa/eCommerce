@@ -10,42 +10,58 @@ namespace eCommerce.Viewes
 {
     public class InfoView : ContentView
     {
-        public string HeaderText { get; private set; }
-        public string BodyText { get; private set; }
+        public static readonly BindableProperty CornerRadiusProperty =
+            BindableProperty.Create<InfoView, double>(p => p.CornerRadius, 0);
 
-        public InfoView(string headerText, string bodyText)
+        public static readonly BindableProperty StrokeProperty =
+            BindableProperty.Create<InfoView, Color>(p => p.Stroke, Color.Transparent);
+
+        public static readonly BindableProperty StrokeThicknessProperty =
+            BindableProperty.Create<InfoView, double>(p => p.StrokeThickness, default(double));
+
+        public static readonly BindableProperty HasShadowProperty =
+            BindableProperty.Create<InfoView, bool>(p => p.HasShadow, default(bool));
+
+        public static readonly BindableProperty HeaderTextProperty =
+            BindableProperty.Create<InfoView, string>(p => p.HeaderText, default(string));
+
+        public static readonly BindableProperty BodyTextProperty =
+            BindableProperty.Create<InfoView, string>(p => p.BodyText, default(string));
+
+        public double CornerRadius
         {
-            HeaderText = headerText;
-            BodyText = bodyText;
-            VerticalOptions = LayoutOptions.FillAndExpand;
+            get { return (double) GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
+        }
 
-            Content = new StackLayout
-            {
-                Spacing = 0,
-                Children = {
-                    new ContentView
-                    {
-                        Padding = new Thickness(5),
-                        BackgroundColor = Color.Red,
-                        Content = new Label
-                        {
-                            Text = HeaderText,
-                            TextColor = Color.White,
-                        }
-                    },
-                    new ContentView
-                    {
-                        Padding = new Thickness(5),
-                        VerticalOptions = LayoutOptions.FillAndExpand,
-                        Content = new Label
-                        {
-                            Text = BodyText,
-                            TextColor = Color.Black,
-                            FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label))
-                        }
-                    }
-                }
-            };
+        public Color Stroke
+        {
+            get { return (Color) GetValue(StrokeProperty); }
+            set { SetValue(StrokeProperty, value); }
+        }
+
+        public double StrokeThickness
+        {
+            get { return (double) GetValue(StrokeThicknessProperty); }
+            set { SetValue(StrokeThicknessProperty, value); }
+        }
+
+        public bool HasShadow
+        {
+            get { return (bool) GetValue(HasShadowProperty); }
+            set { SetValue(HasShadowProperty, value); }
+        }
+
+        public string HeaderText
+        {
+            get { return (string)GetValue(HeaderTextProperty); }
+            set { SetValue(HeaderTextProperty, value); }
+        }
+
+        public string BodyText
+        {
+            get { return (string)GetValue(BodyTextProperty); }
+            set { SetValue(BodyTextProperty, value); }
         }
     }
 }

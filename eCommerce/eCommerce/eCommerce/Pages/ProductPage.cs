@@ -82,7 +82,14 @@ namespace eCommerce.Pages
                     {
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         Padding = new Thickness(5),
-                        Content = new InfoView(_product.Name, _product.Description)
+                        Content = new InfoView()
+                        {
+                            CornerRadius = 10d,
+                            StrokeThickness = 1d,
+                            Stroke = Color.Gray,
+                            HeaderText = _product.Name,
+                            BodyText = _product.Description
+                        }
                     }
                 }
             };
