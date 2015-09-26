@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using eCommerce.Converters;
+using eCommerce.Models;
+using eCommerce.Pages;
 using Xamarin.Forms;
 
 namespace eCommerce.Viewes
@@ -56,6 +59,17 @@ namespace eCommerce.Viewes
             priceLayout.Children.Add(priceContentView);
             priceLayout.Children.Add(costContentView);
             View = cellLayout;
+
+            var deleteAction = new MenuItem { Text = "Delete", IsDestructive = true }; // red background
+            deleteAction.SetBinding(MenuItem.CommandParameterProperty, new Binding("."));
+            deleteAction.Clicked += async (sender, e) =>
+            {
+                var mi = ((MenuItem)sender);
+
+                var cellModel = (CartCellViewModel) mi.CommandParameter;
+                cellModel.DeleteClicked(cellModel, new EventArgs());
+            };
+            ContextActions.Add(deleteAction);
         }
     }
 

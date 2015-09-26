@@ -59,6 +59,13 @@ namespace eCommerce.Pages
             };
         }
 
+        public void DeleteClicked(object sender, EventArgs e)
+        {
+            var cellModel = (CartCellViewModel) sender;
+            _cartViewModel.DeleteCartItem(cellModel.CartItemId);
+            App.Database.DeleteItem(cellModel.CartItemId);
+        }
+
         private void OnQtyPickerSelectedIndexChanged(object sender, EventArgs e)
         {
             var qty = int.Parse(_qtyPicker.Items[_qtyPicker.SelectedIndex]);
@@ -80,7 +87,8 @@ namespace eCommerce.Pages
                     CartItemId = i.ID,
                     Name = product.Name,
                     Price = product.Price,
-                    Quantity = i.Quantity
+                    Quantity = i.Quantity,
+                    DeleteClicked = DeleteClicked
                 };
             }).ToList();
 

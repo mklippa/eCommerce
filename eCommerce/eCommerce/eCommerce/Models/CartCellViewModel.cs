@@ -1,4 +1,7 @@
-﻿namespace eCommerce.Models
+﻿using System;
+using System.Windows.Input;
+
+namespace eCommerce.Models
 {
     public class CartCellViewModel : BaseViewModel
     {
@@ -16,5 +19,6 @@
         {
             get { return Quantity * Price; }
         }
+        public Action<object, EventArgs> DeleteClicked { get; set; }
     }
 }

@@ -35,6 +35,16 @@ namespace eCommerce.Models
             TotalAmount = _cartList.Sum(i => i.Cost);
         }
 
+        public void DeleteCartItem(int cartItemId)
+        {
+            var item = _cartList.FirstOrDefault(i => i.CartItemId == cartItemId);
+            if (item != null)
+            {
+                _cartList.Remove(item);
+                TotalAmount = _cartList.Sum(i => i.Cost);
+            }
+        }
+
         public void FillWith(IEnumerable<CartCellViewModel> items)
         {
             _cartList.FillWith(items);
