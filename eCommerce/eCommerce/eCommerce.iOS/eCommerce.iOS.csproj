@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderers\InfoPageRenderer.cs" />
     <Compile Include="Renderers\InfoViewRenderer.cs" />
     <Compile Include="SQLite_iOS.cs" />
     <Compile Include="Views\PaddedUIView.cs" />
