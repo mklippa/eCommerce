@@ -20,7 +20,8 @@ namespace eCommerce.Pages
             var closeButtom = new Button
             {
                 WidthRequest = 50,
-                Image = "backspace.png"
+                Image = "backspace.png",
+                BackgroundColor = Color.Transparent
             };
             closeButtom.Clicked += OnCloseButtonClicked;
             var image = new Image

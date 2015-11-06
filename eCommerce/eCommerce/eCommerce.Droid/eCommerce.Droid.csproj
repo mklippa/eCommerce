@@ -105,6 +105,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml" />
+    <AndroidResource Include="Resources\drawable\cart.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\cart.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\cart.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\cart.png" />
+    <AndroidResource Include="Resources\drawable\backspace.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\backspace.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\backspace.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\backspace.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\eCommerce\eCommerce.csproj">
