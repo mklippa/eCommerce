@@ -71,6 +71,12 @@ namespace eCommerce.Droid
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f060002
+			public const int bodyEditText = 2131099650;
+			
+			// aapt resource value: 0x7f060001
+			public const int headerTextView = 2131099649;
+			
 			// aapt resource value: 0x7f060000
 			public const int label = 2131099648;
 			
@@ -89,6 +95,9 @@ namespace eCommerce.Droid
 			
 			// aapt resource value: 0x7f030000
 			public const int InfoPageLayout = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int InfoViewLayout = 2130903041;
 			
 			static Layout()
 			{
